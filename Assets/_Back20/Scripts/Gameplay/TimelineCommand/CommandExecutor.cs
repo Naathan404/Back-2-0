@@ -52,30 +52,5 @@ namespace MeowgaByte.Gameplay
         {
             _player.StopMovement();
         }
-
-        private void Update()
-        {
-            DebugInput();
-        }
-
-        private void DebugInput()
-        {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                TryExecuteDurationCommand(ActionType.RunRight);
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                TryExecuteDurationCommand(ActionType.RunLeft);
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TryExecuteDurationCommand(ActionType.Wait);
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                TryExecuteInstantCommand(ActionType.Jump);
-            }
-        }
     }
 }

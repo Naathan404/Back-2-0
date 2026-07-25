@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d989f0b2c6b65a14fb40d7706530528f, type: 3}
   m_Name: PlayerDataConfig
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Data.PlayerData
-  _moveSpeed: 5
+  _moveSpeed: 7
   _jumpForce: 12

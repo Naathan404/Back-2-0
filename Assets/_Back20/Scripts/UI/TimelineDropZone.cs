@@ -45,6 +45,7 @@ namespace MeowgaByte.UI
         private bool _isCurrentPlacementValid = true;
         private bool _isGhostExpanded = false;
         private float _lastSnappedTime;
+        private Vector2 _lastTargetSize;
 
         private void Awake()
         {
@@ -97,6 +98,8 @@ namespace MeowgaByte.UI
                 _ghostImage.gameObject.SetActive(true);
                 _ghostImage.sizeDelta = new Vector2(_sizeDeltaX, _sizeDeltaY); 
                 _isGhostExpanded = false;
+
+                _lastTargetSize = new Vector2(_sizeDeltaX, _sizeDeltaY); 
             }
 
             _ghostImage.SetAsLastSibling();
@@ -139,7 +142,7 @@ namespace MeowgaByte.UI
             }
             else
             {
-                _ghostImage.pivot = new Vector2(0.5f, 0.5f);
+                _ghostImage.pivot = new Vector2(1f, 0.5f);
             }
 
             _ghostImage.DOAnchorPosX(snappedLocalX, 0.05f).SetEase(Ease.OutCubic);
@@ -149,6 +152,7 @@ namespace MeowgaByte.UI
                 _isGhostExpanded = true;
                 // Sử dụng Width động thay vì Width cứng
                 float widthPixels = command.Duration * _pixelPerSecond;
+                _lastTargetSize = new Vector2(widthPixels, _sizeDeltaY); 
                 _ghostImage.DOSizeDelta(new Vector2(widthPixels, _ghostImage.sizeDelta.y), 0.2f)
                     .SetEase(Ease.OutBack);
             }
@@ -173,14 +177,14 @@ namespace MeowgaByte.UI
 
             blockRect.pivot = _ghostImage.pivot;
             blockRect.anchoredPosition = new Vector2(droppedX, 0); 
-            blockRect.sizeDelta = _ghostImage.sizeDelta;
+            blockRect.sizeDelta = _lastTargetSize;
 
             if (newBlock.TryGetComponent(out CommandBlockView blockView))
             {
                 blockView.SetIcon(command.Icon, _sizeDeltaX, _sizeDeltaY);
             }
 
-            _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration);
+            _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration, command.ActionName);
             
             _ghostImage.gameObject.SetActive(false);
             return true;

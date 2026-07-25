@@ -15,12 +15,13 @@ namespace MeowgaByte.Gameplay
             _commandList = new List<CommandNode>();
         }
 
-        public bool TryAddCommandNode(float startTime, ActionType actionType, CommandType commandType, float duration = 0)
+        public bool TryAddCommandNode(float startTime, ActionType actionType, CommandType commandType, float duration = 0, string actionName = "")
         {
             if (startTime <= 0) return false;
 
             _commandList.Add(new CommandNode
             {
+                ActionName = actionName,
                 StartTime = startTime,
                 Duration = duration,
                 ActType = actionType,
@@ -103,6 +104,7 @@ namespace MeowgaByte.Gameplay
     {
         public float StartTime = 0;
         public float Duration = 0;
+        public string ActionName;
         public ActionType ActType = ActionType.Wait;
         public CommandType CmdType = CommandType.Instant;
     }

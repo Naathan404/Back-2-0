@@ -23,7 +23,13 @@ public class CommandController : MonoBehaviour
         {
             DraggableCommand cmd = Instantiate(_commandUIPrefab, _commandContainer);
             LevelCommand levelCommand = commands[i];
-            cmd.Init(levelCommand.Command.CmdType, levelCommand.Command.ActionType, levelCommand.Command.CmdSprite, levelCommand.Durtation);
+            cmd.Init(
+                levelCommand.Command.CmdType, 
+                levelCommand.Command.ActionType, 
+                levelCommand.Command.CmdSprite, 
+                levelCommand.Durtation, 
+                levelCommand.Command.ActionName,
+                levelCommand.Command.Description);
         }
     }
 }

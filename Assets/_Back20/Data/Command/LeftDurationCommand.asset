@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: LeftDurationCommand
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Gameplay.DurationCommand
   CmdSprite: {fileID: -8597161762759871270, guid: 2ef043a77bb8d234fa2ab38457b5eeef, type: 3}
+  ActionName: Left
+  Description: Move Left Command
   _actionType: 1

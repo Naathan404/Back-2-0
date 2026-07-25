@@ -79,6 +79,7 @@ namespace MeowgaByte.Gameplay
             if (_elapsedTime >= levelTime)
             {
                 _isPlaying = false;
+                GameManager.Instance?.Lose();
                 _executor.StopDurationCommand();
                 OnPlaybackTimeout?.Invoke();
             }
@@ -162,21 +163,22 @@ namespace MeowgaByte.Gameplay
  
                 if (evt.IsStop)
                 {
-                    // Chỉ Stop nếu chưa có Duration command mới hơn ghi đè kể từ lúc
-                    // lệnh này Start (tránh dừng nhầm 1 lệnh Run mới hơn đang chạy).
                     if (evt.Version == _activeDurationVersion)
                     {
                         _executor.StopDurationCommand();
+                        _info.UpdateNotifyText("STOP");
                     }
                 }
                 else if (evt.Node.CmdType == CommandType.Duration)
                 {
                     _executor.TryExecuteDurationCommand(evt.Node.ActType);
                     _activeDurationVersion = evt.Version;
+                    _info.UpdateNotifyText(evt.Node.ActionName);
                 }
                 else
                 {
                     _executor.TryExecuteInstantCommand(evt.Node.ActType);
+                    _info.UpdateNotifyText(evt.Node.ActionName);
                 }
  
                 OnCommandExecuted?.Invoke(evt.Node);

@@ -1,4 +1,6 @@
+using MeowgaByte.Core;
 using MeowgaByte.Data;
+using MeowgaByte.World;
 using UnityEngine;
 
 namespace MeowgaByte.Gameplay
@@ -7,8 +9,10 @@ namespace MeowgaByte.Gameplay
     {
         [Header("Refereces")]
         [SerializeField] private PlayerData _playerData;
+        [SerializeField] private PlayerVisual _visual;
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private InfoPanelController _info;
 
         [Header("Debug field")]
         [SerializeField] private bool _isMoving = false;
@@ -80,6 +84,42 @@ namespace MeowgaByte.Gameplay
             _isMoving = false;
             _moveDirection = 1;
             _rb.linearVelocity = Vector2.zero;
+        }
+
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collision.gameObject.TryGetComponent<IHarmful>(out _))
+            {
+                GameManager.Instance?.Lose();
+            }
+        }
+
+        /// <summary>
+        /// Hàm này được gọi bởi object Sign khi người chơi đi ngang qua
+        /// </summary>
+        public void HandleSignDirection(SignDirection newDirection)
+        {
+            if (_isMoving) 
+            {
+                if (newDirection == SignDirection.Left)
+                {
+                    SetMoveDirection(-1);
+                }
+                else if (newDirection == SignDirection.Right)
+                {
+                    SetMoveDirection(1);
+                }
+                _info.UpdateNotifyText("Change Direction!");
+            }
+        }
+
+        /// <summary>
+        /// Gọi hàm này cho Player chết
+        /// </summary>
+        public void Die()
+        {
+            _visual.PlayDeathEffect();
         }
 
         #endregion

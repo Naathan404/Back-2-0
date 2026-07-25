@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: RightDurationCommand
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Gameplay.DurationCommand
   CmdSprite: {fileID: -8887397717598687732, guid: 29cfb382b5d29a7488149b5812396c99, type: 3}
+  ActionName: Right
+  Description: Move Right Command
   _actionType: 0

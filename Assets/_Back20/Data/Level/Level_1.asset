@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   LevelTime: 5
-  SnapTime: 0.25
+  SnapTime: 1
   LevelCommands:
   - Command: {fileID: 11400000, guid: c0a04a34e98bc7e48978dd49b6e8c0cc, type: 2}
-    Durtation: 4
+    Durtation: 2

@@ -67,15 +67,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 99S
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 424c6951f1090b949a7b3fe686903496, type: 2}
-  m_sharedMaterial: {fileID: 7953453603057114648, guid: 424c6951f1090b949a7b3fe686903496, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 21ac870258a6adc449644932955c727c, type: 2}
+  m_sharedMaterial: {fileID: -6905050836886585909, guid: 21ac870258a6adc449644932955c727c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4283894794
+  m_fontColor: {r: 0.038291603, g: 0.045240067, b: 0.342318, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -191,6 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.UI.DraggableCommand
   _commandType: 0
   _actionType: 0
+  _actionName: 
+  _description: this is the default description
   _duration: 0
   _image: {fileID: 1163830607199698594}
   _durationText: {fileID: 2436115718385791268}

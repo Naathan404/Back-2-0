@@ -30,7 +30,7 @@ namespace MeowgaByte.UI
 
         public void Replay()
         {
-            SceneController.Instance?.ReloadScene();
+            SceneController.Instance?.ReloadSceneWithTransition(false);
         }
     }
     
