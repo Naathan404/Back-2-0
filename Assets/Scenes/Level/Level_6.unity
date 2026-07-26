@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 12187984}
   - component: {fileID: 12187986}
   - component: {fileID: 12187985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 12601809}
   - component: {fileID: 12601811}
   - component: {fileID: 12601810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 589841854}
   - component: {fileID: 589841853}
   - component: {fileID: 589841852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 803395709}
   - component: {fileID: 803395711}
   - component: {fileID: 803395710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9044500490926364641, guid: 83f741f39279cbf48b25ece1a76b0858, type: 3}
       propertyPath: _nextLevelSceneName
-      value: Level_6
+      value: Level_7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1258,7 +1258,7 @@ Transform:
   m_GameObject: {fileID: 931470322}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534014, y: -0, z: -0, w: 0.9673613}
-  m_LocalPosition: {x: 9, y: 13.990002, z: -10}
+  m_LocalPosition: {x: 9, y: 13.990002, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1345,7 +1345,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0, z: -10}
+  FollowOffset: {x: 0, y: 0, z: -15}
 --- !u!1 &940440048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 953244796}
   - component: {fileID: 953244798}
   - component: {fileID: 953244797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,11 +2066,11 @@ RectTransform:
   - {fileID: 940440049}
   m_Father: {fileID: 1523664868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 688}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1659434435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,9 +2144,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 99}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1954748993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,7 +2495,7 @@ GameObject:
   - component: {fileID: 2138878722}
   - component: {fileID: 2138878724}
   - component: {fileID: 2138878723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3174,7 +3174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4553439749052042486, guid: d4aed311e684dd241a5eb5aa6359d400, type: 3}
       propertyPath: m_text
-      value: MODULE 1.0
+      value: MODULE 1-6
       objectReference: {fileID: 0}
     - target: {fileID: 7907890046666642891, guid: d4aed311e684dd241a5eb5aa6359d400, type: 3}
       propertyPath: m_Name

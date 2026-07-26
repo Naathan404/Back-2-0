@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: VFX
     uniqueID: 2651075993
+    locked: 0
+  - name: Shockwave
+    uniqueID: 331871549
     locked: 0
   m_RenderingLayers:
   - Default

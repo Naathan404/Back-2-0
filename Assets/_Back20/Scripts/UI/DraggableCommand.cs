@@ -30,7 +30,7 @@ namespace MeowgaByte.UI
         private float _punchDurationn = 0.3f;
         private float _returnDurationn = 0.3f;
 
-        private float _draggingAlpha = 0.8f;
+        private float _draggingAlpha = 0.6f;
         
         private GameObject _placeholder; 
         

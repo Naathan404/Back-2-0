@@ -1179,7 +1179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 33}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2903777899640713947
@@ -1605,6 +1605,7 @@ MonoBehaviour:
   _sizeDeltaX: 80
   _sizeDeltaY: 80
   _validColor: {r: 0.72156864, g: 1, b: 0.7294118, a: 1}
+  _nestedValidColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   _invalidColor: {r: 1, g: 0.3, b: 0.3, a: 1}
   _commandBlockPrefab: {fileID: 2261934421472686722, guid: 3cf7cf9e48c050c44ab446824b11401f, type: 3}
   _pixelPerSecond: 80
@@ -1950,6 +1951,7 @@ MonoBehaviour:
   _sizeDeltaX: 80
   _sizeDeltaY: 80
   _validColor: {r: 0.72156864, g: 1, b: 0.7294118, a: 1}
+  _nestedValidColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   _invalidColor: {r: 1, g: 0.3, b: 0.3, a: 1}
   _commandBlockPrefab: {fileID: 2261934421472686722, guid: 3cf7cf9e48c050c44ab446824b11401f, type: 3}
   _pixelPerSecond: 80

@@ -37,6 +37,7 @@ namespace MeowgaByte.World
         {
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
             Transform playerTransform = player.transform;
+            player.HitTarget();
 
             if (rb != null)
             {
@@ -50,6 +51,12 @@ namespace MeowgaByte.World
             {
                 _successParticles.Play();
             }
+
+            OverlayEffectController.Instance?.FlashScreen(OverlayEffectController.Instance.GoalColor, flashDuration: _animationDuration);
+            OverlayEffectController.Instance?.FlashVignette(OverlayEffectController.Instance.GoalColor, flashDuration: _animationDuration);
+            
+            if (ShockwaveController.Instance == null) Debug.Log("Khong tim thay shockwave");
+            ShockwaveController.Instance.CallShockWave(transform);
 
             yield return new WaitForSeconds(_waitDuration);
 
