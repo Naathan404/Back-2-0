@@ -12,6 +12,8 @@ namespace MeowgaByte.UI
         [Header("References")]
         [SerializeField] private CommandType _commandType = CommandType.Instant;
         [SerializeField] private ActionType _actionType = ActionType.RunRight;
+        [SerializeField] private string _actionName = "";
+        [SerializeField] private string _description = "this is the default description";
         [SerializeField] private float _duration = 0;
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _durationText;
@@ -28,13 +30,15 @@ namespace MeowgaByte.UI
         private float _punchDurationn = 0.3f;
         private float _returnDurationn = 0.3f;
 
-        private float _draggingAlpha = 0.8f;
+        private float _draggingAlpha = 0.6f;
         
         private GameObject _placeholder; 
         
         private bool _isDraggingOrReturning = false;
         private bool _isReturning = false;
 
+        public string ActionName => _actionName;
+        public string CmdDescription => _description;
         public CommandType CmdType => _commandType;
         public ActionType Action => _actionType;
         public Sprite Icon => _image != null ? _image.sprite : null;
@@ -52,10 +56,12 @@ namespace MeowgaByte.UI
             }            
         }
 
-        public void Init(CommandType commandType, ActionType actionType, Sprite sprite, float duration = 0)
+        public void Init(CommandType commandType, ActionType actionType, Sprite sprite, float duration = 0, string actionName = "", string description = "")
         {
             _commandType = commandType;
             _actionType = actionType;
+            _actionName = actionName;
+            _description = description;
             _duration = duration;
             _image.sprite = sprite;
             _durationText.text = duration != 0 ? duration.ToString("N2") : "";
@@ -66,6 +72,7 @@ namespace MeowgaByte.UI
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
         {
             _isDraggingOrReturning = true; 
+            TooltipManager.Instance?.HideTooltip();
             
             _rect.DOKill();
             _originalParent = transform.parent;
@@ -149,6 +156,9 @@ namespace MeowgaByte.UI
 
             _rect.DOKill();
             _rect.DOScale(_originalScale * 1.25f, 0.2f);
+
+            string tooltipContent = _description;
+            TooltipManager.Instance?.ShowTooltip(tooltipContent);
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -157,6 +167,8 @@ namespace MeowgaByte.UI
             
             _rect.DOKill();
             _rect.DOScale(_originalScale, 0.2f);
+
+            TooltipManager.Instance?.HideTooltip();
         }
     }
 }

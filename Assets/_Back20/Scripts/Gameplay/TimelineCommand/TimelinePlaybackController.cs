@@ -79,6 +79,7 @@ namespace MeowgaByte.Gameplay
             if (_elapsedTime >= levelTime)
             {
                 _isPlaying = false;
+                GameManager.Instance?.Lose();
                 _executor.StopDurationCommand();
                 OnPlaybackTimeout?.Invoke();
             }
@@ -122,23 +123,59 @@ namespace MeowgaByte.Gameplay
             List<CommandNode> sequence = _timelineManager.GetPlaybackSequence();
             List<ScheduledEvent> events = new List<ScheduledEvent>(sequence.Count * 2);
             int version = 0;
- 
+
+            // Tìm các Wait bị lồng bên trong 1 Run để xử lý riêng (không phát Start/Stop độc lập)
+            HashSet<CommandNode> nestedWaits = new HashSet<CommandNode>();
+            foreach (CommandNode run in sequence)
+            {
+                if (run.CmdType != CommandType.Duration || run.ActType == ActionType.Wait) continue;
+                float runBegin = run.StartTime - run.Duration, runEnd = run.StartTime;
+
+                foreach (CommandNode other in sequence)
+                {
+                    if (other == run || other.ActType != ActionType.Wait) continue;
+                    float wBegin = other.StartTime - other.Duration, wEnd = other.StartTime;
+                    if (wBegin >= runBegin && wEnd <= runEnd) nestedWaits.Add(other);
+                }
+            }
+
             foreach (CommandNode node in sequence)
             {
+                if (nestedWaits.Contains(node)) continue; // xử lý bên dưới, gắn theo version của Run chứa nó
+
                 float startTrigger = levelTime - node.StartTime;
- 
+
                 if (node.CmdType == CommandType.Duration && node.Duration > 0f)
                 {
                     version++;
                     events.Add(new ScheduledEvent { Time = startTrigger, Node = node, IsStop = false, Version = version });
                     events.Add(new ScheduledEvent { Time = startTrigger + node.Duration, Node = node, IsStop = true, Version = version });
+
+                    if (node.ActType != ActionType.Wait)
+                    {
+                        float runBegin = node.StartTime - node.Duration, runEnd = node.StartTime;
+
+                        foreach (CommandNode wait in nestedWaits)
+                        {
+                            float wBegin = wait.StartTime - wait.Duration, wEnd = wait.StartTime;
+                            if (wBegin < runBegin || wEnd > runEnd) continue;
+
+                            float pauseTrigger = levelTime - wait.StartTime;
+                            float resumeTrigger = pauseTrigger + wait.Duration;
+
+                            // Pause: coi như 1 Stop, dùng CHUNG version với Run đang chạy
+                            events.Add(new ScheduledEvent { Time = pauseTrigger, Node = wait, IsStop = true, Version = version });
+                            // Resume: Start lại đúng ActionType của Run, vẫn CHUNG version
+                            events.Add(new ScheduledEvent { Time = resumeTrigger, Node = node, IsStop = false, Version = version });
+                        }
+                    }
                 }
                 else
                 {
                     events.Add(new ScheduledEvent { Time = startTrigger, Node = node, IsStop = false });
                 }
             }
- 
+
             events.Sort((a, b) => a.Time.CompareTo(b.Time));
             return events;
         }
@@ -162,21 +199,22 @@ namespace MeowgaByte.Gameplay
  
                 if (evt.IsStop)
                 {
-                    // Chỉ Stop nếu chưa có Duration command mới hơn ghi đè kể từ lúc
-                    // lệnh này Start (tránh dừng nhầm 1 lệnh Run mới hơn đang chạy).
                     if (evt.Version == _activeDurationVersion)
                     {
                         _executor.StopDurationCommand();
+                        _info.UpdateNotifyText("STOP");
                     }
                 }
                 else if (evt.Node.CmdType == CommandType.Duration)
                 {
                     _executor.TryExecuteDurationCommand(evt.Node.ActType);
                     _activeDurationVersion = evt.Version;
+                    _info.UpdateNotifyText(evt.Node.ActionName);
                 }
                 else
                 {
                     _executor.TryExecuteInstantCommand(evt.Node.ActType);
+                    _info.UpdateNotifyText(evt.Node.ActionName);
                 }
  
                 OnCommandExecuted?.Invoke(evt.Node);

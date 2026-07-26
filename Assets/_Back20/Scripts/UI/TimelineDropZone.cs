@@ -27,7 +27,9 @@ namespace MeowgaByte.UI
 
         [Header("Overlap Feedback")]
         [SerializeField] private Color _validColor = Color.white;
+        [SerializeField] private Color _nestedValidColor = new Color(1f, 0.85f, 0.2f); // vàng
         [SerializeField] private Color _invalidColor = new Color(1f, 0.3f, 0.3f);
+
 
         [Header("Instantiation")]
         [SerializeField] private GameObject _commandBlockPrefab;
@@ -45,6 +47,7 @@ namespace MeowgaByte.UI
         private bool _isCurrentPlacementValid = true;
         private bool _isGhostExpanded = false;
         private float _lastSnappedTime;
+        private Vector2 _lastTargetSize;
 
         private void Awake()
         {
@@ -97,6 +100,8 @@ namespace MeowgaByte.UI
                 _ghostImage.gameObject.SetActive(true);
                 _ghostImage.sizeDelta = new Vector2(_sizeDeltaX, _sizeDeltaY); 
                 _isGhostExpanded = false;
+
+                _lastTargetSize = new Vector2(_sizeDeltaX, _sizeDeltaY); 
             }
 
             _ghostImage.SetAsLastSibling();
@@ -119,15 +124,22 @@ namespace MeowgaByte.UI
 
             // snappedTime = Mathf.Clamp(snappedTime, minTime, maxTime);
             _isCurrentPlacementValid = true;
+            bool isNested = false;
             if (command.CmdType == CommandType.Duration)
             {
                 float clamped = _timeline.ClampToFreeGap(
-                    command.CmdType, snappedTime, command.Duration, _gameManager.LevelTime);
+                    command.CmdType, command.Action, snappedTime, command.Duration, _gameManager.LevelTime);
 
                 if (float.IsNaN(clamped)) _isCurrentPlacementValid = false;
-                else snappedTime = clamped;
+                else
+                {
+                    snappedTime = clamped;
+                    isNested = command.Action == ActionType.Wait && _timeline.IsNestedInsideRun(snappedTime, command.Duration);
+                }
             }
-            _ghostRenderer.color = _isCurrentPlacementValid ? _validColor : _invalidColor;
+            _ghostRenderer.color = !_isCurrentPlacementValid ? _invalidColor
+                : isNested ? _nestedValidColor
+                : _validColor;
             // =====================
 
             _lastSnappedTime = snappedTime;
@@ -139,7 +151,7 @@ namespace MeowgaByte.UI
             }
             else
             {
-                _ghostImage.pivot = new Vector2(0.5f, 0.5f);
+                _ghostImage.pivot = new Vector2(1f, 0.5f);
             }
 
             _ghostImage.DOAnchorPosX(snappedLocalX, 0.05f).SetEase(Ease.OutCubic);
@@ -149,6 +161,7 @@ namespace MeowgaByte.UI
                 _isGhostExpanded = true;
                 // Sử dụng Width động thay vì Width cứng
                 float widthPixels = command.Duration * _pixelPerSecond;
+                _lastTargetSize = new Vector2(widthPixels, _sizeDeltaY); 
                 _ghostImage.DOSizeDelta(new Vector2(widthPixels, _ghostImage.sizeDelta.y), 0.2f)
                     .SetEase(Ease.OutBack);
             }
@@ -159,7 +172,7 @@ namespace MeowgaByte.UI
             float startTime = _lastSnappedTime;
 
             if (!_isCurrentPlacementValid ||
-                _timeline.HasOverlap(command.CmdType, startTime, command.Duration))
+                _timeline.HasOverlap(command.CmdType, command.Action, startTime, command.Duration))
             {
                 _ghostImage.gameObject.SetActive(false);
                 return false;
@@ -173,14 +186,17 @@ namespace MeowgaByte.UI
 
             blockRect.pivot = _ghostImage.pivot;
             blockRect.anchoredPosition = new Vector2(droppedX, 0); 
-            blockRect.sizeDelta = _ghostImage.sizeDelta;
+            blockRect.sizeDelta = _lastTargetSize;
 
             if (newBlock.TryGetComponent(out CommandBlockView blockView))
             {
                 blockView.SetIcon(command.Icon, _sizeDeltaX, _sizeDeltaY);
+                bool isNested = command.Action == ActionType.Wait
+                    && _timeline.IsNestedInsideRun(startTime, command.Duration);
+                blockView.SetNestedStyle(isNested);
             }
 
-            _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration);
+            _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration, command.ActionName);
             
             _ghostImage.gameObject.SetActive(false);
             return true;

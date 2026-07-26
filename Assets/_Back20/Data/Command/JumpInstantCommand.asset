@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: JumpInstantCommand
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Gameplay.InstantCommand
   CmdSprite: {fileID: 5352640513115167073, guid: c601e9d4aa5a946419997019e436dd9e, type: 3}
+  ActionName: Jump
+  Description: Jump Command
   _actionType: 3
