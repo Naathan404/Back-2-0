@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68f1eb56ad2e3249b6827ed29fb0864, type: 3}
   m_Name: WaitDurationCommand
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Gameplay.DurationCommand
-  CmdSprite: {fileID: 7338253826603283255, guid: 3b77b54e5faab4b448fb5516811dc6e0, type: 3}
+  CmdSprite: {fileID: 710652371559907727, guid: 6c19e527343364a48abf92fe4cab9805, type: 3}
   ActionName: Wait
   Description: Wait Command. Overrides the other duration command.
   _actionType: 2

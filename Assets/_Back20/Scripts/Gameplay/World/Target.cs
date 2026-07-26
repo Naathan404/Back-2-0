@@ -16,7 +16,20 @@ namespace MeowgaByte.World
 
         [SerializeField] private ParticleSystem _successParticles;
 
+        [Header("Anim setting")]
+        [SerializeField] private Transform _visual;
+        [SerializeField] private Vector3 _rotateVector = new Vector3(0, 0, 15);
+        [SerializeField] private float _rotateDuration = 0.5f;
+
         private bool _isTriggered = false;
+
+        private void Start()
+        {
+            _visual.DORotate(_rotateVector, _rotateDuration)
+                .SetRelative(true)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
+        }
 
         [System.Obsolete]
         private void OnTriggerEnter2D(Collider2D collision)

@@ -37,16 +37,38 @@ namespace MeowgaByte.Core
         public AudioClip InputFieldClick;
 
         [HideInInspector] public AudioClip CurrentBGM; 
+        [HideInInspector] public AudioClip CurrentSFX; 
+
+        public bool IsSFXMuted = false;
+        public bool IsBGMMuted = false;
+
+        public const string PREF_SFX_MUTED = "Audio_IsSFXMuted";
+        public const string PREF_BGM_MUTED = "Audio_IsBGMMuted";
 
         public override void Awake()
         {
             base.Awake();
             DontDestroyOnLoad(this.gameObject);
+            LoadAudioSettings();
+        }
+
+        private void LoadAudioSettings()
+        {
+            IsSFXMuted = PlayerPrefs.GetInt(PREF_SFX_MUTED, 0) == 1;
+            IsBGMMuted = PlayerPrefs.GetInt(PREF_BGM_MUTED, 0) == 1;
+
+            ApplyBGMMuteState();
+        }
+
+        private void ApplyBGMMuteState()
+        {
+            Music.volume = IsBGMMuted ? 0f : 0.1f;
         }
 
         public void PlaySFX(AudioClip sfx, bool randomPitch = false, bool isOverrided = false, float volume = 1f)
         {
             SFX.volume = volume;
+            if (IsSFXMuted) SFX.volume = 0;
 
             if(randomPitch)
             {
@@ -68,8 +90,6 @@ namespace MeowgaByte.Core
             {
                 SFX.PlayOneShot(sfx);
             }
-
-            SFX.volume = 1f;
         }
 
         public void StopSFX()
@@ -82,6 +102,7 @@ namespace MeowgaByte.Core
         {
             Music.volume = volume;
             CurrentBGM = music;
+            if (IsBGMMuted) Music.volume = 0;
 
             if(Music.clip == music) return;
             Music.clip = music;
@@ -90,19 +111,16 @@ namespace MeowgaByte.Core
 
         public void StopMusic()
         {
-            if (Music.isPlaying)
-            {
-                Music.Stop();
-                CurrentBGM = null;
-            }
+            Music.Stop();
+            CurrentBGM = null;
         }
 
         public void PlayTimerTick(AudioClip sfx)
         {
-            if (TimerSource.isPlaying) return; // Nếu đang chạy thì không bắt đầu lại
+            if (TimerSource.isPlaying) return; 
 
             TimerSource.clip = sfx;
-            TimerSource.loop = true; // 🌟 QUAN TRỌNG: để nó lặp lại liên tục
+            TimerSource.loop = true; 
             TimerSource.Play();
         }
 
@@ -112,6 +130,22 @@ namespace MeowgaByte.Core
             {
                 TimerSource.Stop();
             }
+        }
+
+        public void ToggleMuteSFX()
+        {
+            IsSFXMuted = !IsSFXMuted;
+            PlayerPrefs.SetInt(PREF_SFX_MUTED, IsSFXMuted ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+
+        public void ToggleMuteBGM()
+        {
+            IsBGMMuted = !IsBGMMuted;
+            PlayerPrefs.SetInt(PREF_BGM_MUTED, IsBGMMuted ? 1 : 0);
+            PlayerPrefs.Save();
+
+            ApplyBGMMuteState();
         }
     }    
 }

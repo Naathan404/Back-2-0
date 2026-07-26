@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5568247690022814644
+--- !u!1 &3631816640162070625
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1090191611081688764}
-  - component: {fileID: 9044500490926364641}
-  - component: {fileID: 5926707271496048449}
-  - component: {fileID: 5944083565819661812}
+  - component: {fileID: 1241197391120915615}
+  - component: {fileID: 9037175771736431935}
   m_Layer: 0
-  m_Name: Target
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1090191611081688764
+--- !u!4 &1241197391120915615
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5568247690022814644}
+  m_GameObject: {fileID: 3631816640162070625}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.72744, y: 0.24734999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2017879698646402603}
-  - {fileID: 8574008578804300071}
-  m_Father: {fileID: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1090191611081688764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9044500490926364641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5568247690022814644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be069e8c49f12f4ea63dc7d444ef1d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.World.Target
-  _nextLevelSceneName: Level_4
-  _delayBeforeTransition: 1.5
-  _animationDuration: 0.7
-  _waitDuration: 0.5
-  _successParticles: {fileID: 1262984254772934432}
---- !u!212 &5926707271496048449
+--- !u!212 &9037175771736431935
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5568247690022814644}
+  m_GameObject: {fileID: 3631816640162070625}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -102,8 +81,8 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 0.9411765, b: 1, a: 1}
+  m_Sprite: {fileID: -4306816399600532350, guid: 9ea0021945d91984e9cc379aa6202c58, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,6 +91,62 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5568247690022814644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1090191611081688764}
+  - component: {fileID: 9044500490926364641}
+  - component: {fileID: 5944083565819661812}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1090191611081688764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568247690022814644}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.72744, y: 0.24734999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2017879698646402603}
+  - {fileID: 8574008578804300071}
+  - {fileID: 1241197391120915615}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9044500490926364641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568247690022814644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be069e8c49f12f4ea63dc7d444ef1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.World.Target
+  _nextLevelSceneName: Level_3
+  _delayBeforeTransition: 1.5
+  _animationDuration: 0.7
+  _waitDuration: 0.5
+  _successParticles: {fileID: 1262984254772934432}
+  _visual: {fileID: 1241197391120915615}
+  _rotateVector: {x: 0, y: 0, z: 15}
+  _rotateDuration: 0.5
 --- !u!58 &5944083565819661812
 CircleCollider2D:
   m_ObjectHideFlags: 0

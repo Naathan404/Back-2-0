@@ -71,6 +71,7 @@ namespace MeowgaByte.UI
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
         {
+            if (GameManager.Instance?.State != GameState.Prepare) return;
             _isDraggingOrReturning = true; 
             TooltipManager.Instance?.HideTooltip();
             AudioManager.Instance?.PlaySFX(AudioManager.Instance.SelectCommandSFX, true);
@@ -99,6 +100,7 @@ namespace MeowgaByte.UI
 
         void IDragHandler.OnDrag(PointerEventData eventData)
         {
+            if (GameManager.Instance?.State != GameState.Prepare) return;
             _rect.position = eventData.position;
 
             if (CurrentHoveredZone != null)
@@ -109,6 +111,7 @@ namespace MeowgaByte.UI
 
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
+            if (GameManager.Instance?.State != GameState.Prepare) return;
             _rect.DOKill();
             _isReturning = true;
             bool placed = CurrentHoveredZone != null
@@ -155,6 +158,7 @@ namespace MeowgaByte.UI
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (GameManager.Instance?.State != GameState.Prepare) return;
             if (_isDraggingOrReturning || _isReturning) return; 
 
             _rect.DOKill();
@@ -166,6 +170,7 @@ namespace MeowgaByte.UI
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (GameManager.Instance?.State != GameState.Prepare) return;
             if (_isDraggingOrReturning || _isReturning) return; 
             
             _rect.DOKill();
