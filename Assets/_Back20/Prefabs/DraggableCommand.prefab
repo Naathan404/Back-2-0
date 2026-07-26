@@ -197,6 +197,11 @@ MonoBehaviour:
   _image: {fileID: 1163830607199698594}
   _durationText: {fileID: 2436115718385791268}
   CurrentHoveredZone: {fileID: 0}
+  _scaleAmount: 1.3
+  _scaleDuration: 0.2
+  _punchDurationn: 0.35
+  _returnDurationn: 0.3
+  _draggingAlpha: 0.5
 --- !u!222 &5544132745268419124
 CanvasRenderer:
   m_ObjectHideFlags: 0

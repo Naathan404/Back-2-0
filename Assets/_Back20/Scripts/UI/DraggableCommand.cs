@@ -25,12 +25,12 @@ namespace MeowgaByte.UI
         private RectTransform _rect;
         private CanvasGroup _canvasGroup;
         private Vector2 _originalScale;
-        private float _scaleAmount = 1.3f;
-        private float _scaleDuration = 0.2f;
-        private float _punchDurationn = 0.3f;
-        private float _returnDurationn = 0.3f;
+        [SerializeField] private float _scaleAmount = 1.3f;
+        [SerializeField] private float _scaleDuration = 0.2f;
+        [SerializeField] private float _punchDurationn = 0.3f;
+        [SerializeField] private float _returnDurationn = 0.3f;
 
-        private float _draggingAlpha = 0.6f;
+        [SerializeField] private float _draggingAlpha = 0.6f;
         
         private GameObject _placeholder; 
         
@@ -73,6 +73,7 @@ namespace MeowgaByte.UI
         {
             _isDraggingOrReturning = true; 
             TooltipManager.Instance?.HideTooltip();
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.SelectCommandSFX, true);
             
             _rect.DOKill();
             _originalParent = transform.parent;
@@ -119,6 +120,7 @@ namespace MeowgaByte.UI
                 _canvasGroup.alpha = 1f;
                 _canvasGroup.blocksRaycasts = true; 
 
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance.DropSuccessCommandSFX, true);
                 _rect.DOScale(Vector2.zero, _scaleDuration).SetEase(Ease.InOutExpo).OnComplete(() =>
                 {
                     if (_placeholder != null) Destroy(_placeholder);
@@ -127,6 +129,7 @@ namespace MeowgaByte.UI
             }
             else
             {
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance.DropFailCommandSFX, true);
                 _rect.DOPunchRotation(new Vector3(0, 0, 15), _punchDurationn, 10, 1).OnComplete(() =>
                 {
                     _rect.DOScale(_originalScale, _returnDurationn);

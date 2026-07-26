@@ -95,7 +95,8 @@ namespace MeowgaByte.Gameplay
                 DebugHandler.LogError(this.name, "Missing references (TimelineManager / CommandExecutor / PlayerController)");
                 return;
             }
-
+            
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.GameStartSFX, true, true);
             _player.Respawn();
             _executor.StopDurationCommand();
 

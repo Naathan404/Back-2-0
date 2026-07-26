@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using MeowgaByte.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +10,8 @@ public class HoverUIObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private float _punchDuration = 0.1f;
     [SerializeField] private float _scaleAmount = 1.2f;
 
+    [SerializeField] private bool _playSound = true;
+
     private void Start()
     {
         _originalScale = transform.localScale;
@@ -16,6 +19,8 @@ public class HoverUIObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (_playSound)
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.Hover, true);
         transform.DOKill();
         transform.DOScale(_originalScale * _scaleAmount, _punchDuration);
     }

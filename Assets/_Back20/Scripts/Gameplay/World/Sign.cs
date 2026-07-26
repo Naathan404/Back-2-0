@@ -1,5 +1,6 @@
 using UnityEngine;
-using MeowgaByte.Gameplay; // Thay đổi theo namespace chứa PlayerController của ông
+using MeowgaByte.Gameplay;
+using MeowgaByte.Core; // Thay đổi theo namespace chứa PlayerController của ông
 
 namespace MeowgaByte.World
 {
@@ -23,6 +24,7 @@ namespace MeowgaByte.World
                 collision.attachedRigidbody.TryGetComponent<PlayerController>(out var player))
             {
                 _particle.Play();
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance.SignSFX, true);
                 player.HandleSignDirection(_direction);
             }
         }
