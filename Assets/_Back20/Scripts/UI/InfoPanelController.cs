@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MeowgaByte.Core;
 using TMPro;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class InfoPanelController : MonoBehaviour
 
     public void UpdateNotifyText(string act)
     {
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance.HitCommandSFX, true);
         _notifyText.transform.DOKill();
         _notifyText.text = act;
         _notifyText.transform.DOPunchScale(0.5f * Vector2.one, 0.3f);

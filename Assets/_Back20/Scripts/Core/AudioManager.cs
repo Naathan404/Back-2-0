@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 
 namespace MeowgaByte.Core
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : MonoSingleton<AudioManager>
     {   
         [Header("Audio Sources")]
         [SerializeField] private AudioMixer _audioMixer;
@@ -13,10 +13,17 @@ namespace MeowgaByte.Core
 
 
         [Header("Gameplay SFX")]
-        public AudioClip CommandSFX;
+        public AudioClip SelectCommandSFX;
+        public AudioClip DropFailCommandSFX;
+        public AudioClip DropSuccessCommandSFX;
+        public AudioClip HitCommandSFX;
         public AudioClip JumpSFX;
-        public AudioClip VictorySFX;
-        public AudioClip DefeatSFX;
+        public AudioClip SignSFX;
+        public AudioClip FootstepSFX;
+
+        public AudioClip GameStartSFX;
+        public AudioClip WinSFX;
+        public AudioClip FailSFX;
 
 
         [Header("Music")]
@@ -29,19 +36,12 @@ namespace MeowgaByte.Core
         public AudioClip Hover;
         public AudioClip InputFieldClick;
 
+        [HideInInspector] public AudioClip CurrentBGM; 
 
-        public static AudioManager Instance;
-        private void Awake()
+        public override void Awake()
         {
-            if(Instance != null  && Instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(this.gameObject);
-            }
+            base.Awake();
+            DontDestroyOnLoad(this.gameObject);
         }
 
         public void PlaySFX(AudioClip sfx, bool randomPitch = false, bool isOverrided = false, float volume = 1f)
@@ -81,10 +81,20 @@ namespace MeowgaByte.Core
         public void PlayMusic(AudioClip music, float volume = 1f)
         {
             Music.volume = volume;
+            CurrentBGM = music;
 
             if(Music.clip == music) return;
             Music.clip = music;
             Music.Play();
+        }
+
+        public void StopMusic()
+        {
+            if (Music.isPlaying)
+            {
+                Music.Stop();
+                CurrentBGM = null;
+            }
         }
 
         public void PlayTimerTick(AudioClip sfx)

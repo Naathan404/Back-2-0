@@ -82,6 +82,7 @@ namespace MeowgaByte.Gameplay
             _isMoving = true;
             _moveDirection = direction;
             this.transform.localScale = new Vector2(direction, 1);
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.FootstepSFX, true, true);
         }
 
         /// <summary>
@@ -98,6 +99,7 @@ namespace MeowgaByte.Gameplay
         /// </summary>
         public bool TryJump()
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.JumpSFX, true);
             _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _playerData.JumpForce);
             return true;
         }
@@ -153,6 +155,8 @@ namespace MeowgaByte.Gameplay
         public void Die()
         {
             _visual.PlayDeathEffect();
+            AudioManager.Instance?.StopMusic();
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.FailSFX, true);
 
             if (_rb != null)
             {
@@ -164,6 +168,8 @@ namespace MeowgaByte.Gameplay
 
         public void HitTarget()
         {
+            AudioManager.Instance?.StopMusic();
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.WinSFX, true);
             _isHitTarget = true;
             _visual.UpdateAnimation(_visual.ANIM_IDLE);
         }

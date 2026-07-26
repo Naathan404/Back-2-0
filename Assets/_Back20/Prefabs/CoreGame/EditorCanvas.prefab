@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoverUIObject
   _punchDuration: 0.1
   _scaleAmount: 1.2
+  _playSound: 0
 --- !u!1 &553485862205853402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoverUIObject
   _punchDuration: 0.1
   _scaleAmount: 1.2
+  _playSound: 0
 --- !u!1 &5047674263826021526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,6 +2507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoverUIObject
   _punchDuration: 0.1
   _scaleAmount: 1.2
+  _playSound: 0
 --- !u!1 &7066771486389245591
 GameObject:
   m_ObjectHideFlags: 0

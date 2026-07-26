@@ -1,4 +1,5 @@
 using System;
+using MeowgaByte.Core;
 using MeowgaByte.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,6 @@ namespace MeowgaByte.UI
         public void Play()
         {
             _playbackConntroller.Play();
-
             _playButton.gameObject.SetActive(false);
             _clearButton.gameObject.SetActive(false);
             _replayButton.gameObject.SetActive(true);
@@ -30,6 +30,7 @@ namespace MeowgaByte.UI
 
         public void Replay()
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.ButtonClick, true);
             SceneController.Instance?.ReloadSceneWithTransition(false);
         }
     }
