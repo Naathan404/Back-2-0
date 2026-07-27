@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using MeowgaByte.Data;
 using MeowgaByte.Gameplay;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MeowgaByte.Core
@@ -17,15 +18,34 @@ namespace MeowgaByte.Core
         [SerializeField] private TimelinePlaybackController _timelinePlaybackController;
         [SerializeField] private PlayerController _player;
 
+        private GameState _state = GameState.Prepare;
+        public GameState State
+        {
+            get => _state;
+            set => _state = value;
+        }
+
         public void Win()
         {
+            _state = GameState.Win;
             _timelinePlaybackController.Stop();
         }
 
+        [Obsolete]
         public void Lose()
         {
+            _state = GameState.Lose;
             _timelinePlaybackController.Stop();
             _player.Die();
         }
+    }
+
+    public enum GameState
+    {
+        Prepare,
+        Playing,
+        Pause,
+        Win,
+        Lose
     }
 }

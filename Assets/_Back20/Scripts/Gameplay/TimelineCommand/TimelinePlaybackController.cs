@@ -96,6 +96,7 @@ namespace MeowgaByte.Gameplay
                 return;
             }
             
+            GameManager.Instance.State = GameState.Playing;
             AudioManager.Instance?.PlaySFX(AudioManager.Instance.GameStartSFX, true, true);
             _player.Respawn();
             _executor.StopDurationCommand();

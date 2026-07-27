@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71265fed337420c49829f1becc0ce00a, type: 3}
-  m_Name: Level_4
+  m_Name: Level_1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  LevelTime: 8
+  LevelTime: 3
   SnapTime: 1
   LevelCommands:
-  - Command: {fileID: 11400000, guid: ddc6d880f32338543a6ef93380543cca, type: 2}
-    Durtation: 0
   - Command: {fileID: 11400000, guid: c0a04a34e98bc7e48978dd49b6e8c0cc, type: 2}
-    Durtation: 6
+    Durtation: 2

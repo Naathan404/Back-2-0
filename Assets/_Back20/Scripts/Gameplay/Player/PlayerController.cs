@@ -155,8 +155,8 @@ namespace MeowgaByte.Gameplay
         public void Die()
         {
             _visual.PlayDeathEffect();
-            AudioManager.Instance?.StopMusic();
-            AudioManager.Instance?.PlaySFX(AudioManager.Instance.FailSFX, true);
+            //AudioManager.Instance?.StopMusic();
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.FailSFX, true, true);
 
             if (_rb != null)
             {
@@ -168,8 +168,8 @@ namespace MeowgaByte.Gameplay
 
         public void HitTarget()
         {
-            AudioManager.Instance?.StopMusic();
-            AudioManager.Instance?.PlaySFX(AudioManager.Instance.WinSFX, true);
+            //AudioManager.Instance?.StopMusic();
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.WinSFX, true, true);
             _isHitTarget = true;
             _visual.UpdateAnimation(_visual.ANIM_IDLE);
         }

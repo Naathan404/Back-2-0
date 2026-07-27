@@ -190,7 +190,7 @@ namespace MeowgaByte.UI
 
             if (newBlock.TryGetComponent(out CommandBlockView blockView))
             {
-                blockView.SetIcon(command.Icon, _sizeDeltaX, _sizeDeltaY);
+                blockView.SetIcon(command.Icon, _sizeDeltaX * 1.25f, _sizeDeltaY * 1.25f);
                 bool isNested = command.Action == ActionType.Wait
                     && _timeline.IsNestedInsideRun(startTime, command.Duration);
                 blockView.SetNestedStyle(isNested);
