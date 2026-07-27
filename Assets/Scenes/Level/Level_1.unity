@@ -289,9 +289,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2072834994}
     - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: _playheadVisual
+      value: 
+      objectReference: {fileID: 2030738823}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
       propertyPath: _lanes.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: '_lanes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2000202185}
     - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
       propertyPath: _lanes.Array.data[0].Zone
       value: 
@@ -506,8 +514,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 386986536764913340, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
-      propertyPath: m_SizeDelta.y
+      propertyPath: m_SizeDelta.x
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 386986536764913340, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539886138317675657, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1758966625282479431, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
       propertyPath: m_Pivot.x

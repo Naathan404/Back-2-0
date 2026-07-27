@@ -24,6 +24,7 @@ namespace MeowgaByte.UI
         [SerializeField] private RectTransform _ghostImage;
         [SerializeField] private int _sizeDeltaX = 100;
         [SerializeField] private int _sizeDeltaY = 100;
+        [SerializeField] private float _iconScaleAmount = 1.25f;
 
         [Header("Overlap Feedback")]
         [SerializeField] private Color _validColor = Color.white;
@@ -151,7 +152,7 @@ namespace MeowgaByte.UI
             }
             else
             {
-                _ghostImage.pivot = new Vector2(1f, 0.5f);
+                _ghostImage.pivot = new Vector2(0.5f, 0.5f);
             }
 
             _ghostImage.DOAnchorPosX(snappedLocalX, 0.05f).SetEase(Ease.OutCubic);
@@ -190,7 +191,9 @@ namespace MeowgaByte.UI
 
             if (newBlock.TryGetComponent(out CommandBlockView blockView))
             {
-                blockView.SetIcon(command.Icon, _sizeDeltaX * 1.25f, _sizeDeltaY * 1.25f);
+                blockView.SetIcon(command.Icon, _sizeDeltaX * _iconScaleAmount, _sizeDeltaY * _iconScaleAmount);
+                blockView.SetData(startTime, command.CmdType);
+                blockView.SetGhostSprite(command.CmdType);
                 bool isNested = command.Action == ActionType.Wait
                     && _timeline.IsNestedInsideRun(startTime, command.Duration);
                 blockView.SetNestedStyle(isNested);
@@ -230,6 +233,14 @@ namespace MeowgaByte.UI
         public float TimeToLocalX(float timeValue)
         {
             return _rectTransform.rect.xMin + timeValue * _pixelPerSecond;
+        }
+
+        public float TimeToLocalXWithOffset(float timeValue)
+        {
+            float offset = 0;
+            if (timeValue <= 0) offset = 25;
+
+            return _rectTransform.rect.xMin + offset + timeValue * _pixelPerSecond;
         }
     }
 }

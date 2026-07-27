@@ -81,7 +81,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -368,13 +368,13 @@ TextureImporter:
       name: Elementsss_7
       rect:
         serializedVersion: 2
-        x: 206
-        y: 305
-        width: 322
-        height: 91
+        x: 222
+        y: 309
+        width: 305
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 30, y: 28, z: 26, w: 21}
       customData: 
       outline: []
       physicsShape: []
@@ -456,13 +456,13 @@ TextureImporter:
       name: Elementsss_11
       rect:
         serializedVersion: 2
-        x: 437
-        y: 171
-        width: 322
-        height: 91
-      alignment: 0
+        x: 452
+        y: 174
+        width: 307
+        height: 87
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 33, y: 35, z: 28, w: 22}
       customData: 
       outline: []
       physicsShape: []
@@ -483,7 +483,7 @@ TextureImporter:
         width: 261
         height: 158
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -492,6 +492,50 @@ TextureImporter:
       bones: []
       spriteID: 7f7795ea496472e44b081b3c51d1af19
       internalID: -1779926162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elementsss_13
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 304
+        width: 320
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 45, y: 33, z: 26, w: 27}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464bb30e99966094db30babf6126fa37
+      internalID: 197295122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elementsss_14
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 172
+        width: 331
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 56, y: 37, z: 30, w: 23}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: debb6af6ae6113d45807df7291465ebe
+      internalID: 323171331
       vertices: []
       indices: 
       edges: []
@@ -515,6 +559,8 @@ TextureImporter:
       Elementsss_10: -4203584545288044950
       Elementsss_11: 8393952286419025352
       Elementsss_12: -1779926162
+      Elementsss_13: 197295122
+      Elementsss_14: 323171331
       Elementsss_2: 3790580504491085066
       Elementsss_3: 4570348353533446442
       Elementsss_4: 5777002068778746135
