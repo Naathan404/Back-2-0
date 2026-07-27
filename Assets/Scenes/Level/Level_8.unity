@@ -736,6 +736,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2072834994}
     - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: _playheadVisual
+      value: 
+      objectReference: {fileID: 2030738823}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: '_lanes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 809997350}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: '_lanes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2000202185}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
       propertyPath: _lanes.Array.data[0].Zone
       value: 
       objectReference: {fileID: 809997350}

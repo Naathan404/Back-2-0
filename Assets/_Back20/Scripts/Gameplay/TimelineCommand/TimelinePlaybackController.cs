@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using MeowgaByte.Core;
 using MeowgaByte.UI;
 using UnityEngine;
@@ -14,15 +15,6 @@ namespace MeowgaByte.Gameplay
     /// </summary>
     public class TimelinePlaybackController : MonoBehaviour
     {
-        [Serializable]
-        public class PlayheadLane
-        {
-            [Tooltip("Timeline mà Playhead này chạy trên đó")]
-            public TimelineDropZone Zone;
-            [Tooltip("RectTransform hiển thị vạch Playhead trên Timeline này")]
-            public RectTransform PlayheadVisual;
-        }
-
         [Header("References")]
         [SerializeField] private TimelineManager _timelineManager;
         [SerializeField] private CommandExecutor _executor;
@@ -30,7 +22,8 @@ namespace MeowgaByte.Gameplay
         [SerializeField] private InfoPanelController _info;
 
         [Header("Playhead Visuals")]
-        [SerializeField] private List<PlayheadLane> _lanes = new List<PlayheadLane>();
+        [SerializeField] private List<TimelineDropZone> _lanes = new List<TimelineDropZone>();
+        [SerializeField] private RectTransform _playheadVisual;
 
         public event Action OnPlaybackStarted;
         public event Action OnPlaybackTimeout;
@@ -211,11 +204,13 @@ namespace MeowgaByte.Gameplay
                 {
                     _executor.TryExecuteDurationCommand(evt.Node.ActType);
                     _activeDurationVersion = evt.Version;
+                    PunchScalePlayhead();
                     _info.UpdateNotifyText(evt.Node.ActionName);
                 }
                 else
                 {
                     _executor.TryExecuteInstantCommand(evt.Node.ActType);
+                    PunchScalePlayhead();
                     _info.UpdateNotifyText(evt.Node.ActionName);
                 }
  
@@ -229,13 +224,19 @@ namespace MeowgaByte.Gameplay
         {
             foreach (var lane in _lanes)
             {
-                if (lane.Zone == null || lane.PlayheadVisual == null) continue;
+                if (_playheadVisual == null) continue;
 
-                float x = lane.Zone.TimeToLocalX(clockValue);
-                Vector2 pos = lane.PlayheadVisual.anchoredPosition;
+                float x = lane.TimeToLocalXWithOffset(clockValue);
+                Vector2 pos = _playheadVisual.anchoredPosition;
                 pos.x = x;
-                lane.PlayheadVisual.anchoredPosition = pos;
+                _playheadVisual.anchoredPosition = pos;
             }
+        }
+
+        public void PunchScalePlayhead()
+        {
+            _playheadVisual.transform.DOKill();
+            _playheadVisual.transform.DOPunchScale(0.25f * Vector2.one, 0.2f).SetEase(Ease.OutExpo);
         }
     }
 }

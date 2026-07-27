@@ -2718,6 +2718,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2072834994}
     - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: _playheadVisual
+      value: 
+      objectReference: {fileID: 2030738823}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: '_lanes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 809997350}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
+      propertyPath: '_lanes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2000202185}
+    - target: {fileID: 5461262730152484147, guid: 9e4aa784b984eeb4a8ddf5704c391d3d, type: 3}
       propertyPath: _lanes.Array.data[0].Zone
       value: 
       objectReference: {fileID: 809997350}
@@ -2826,7 +2838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 394308548666134450, guid: bc9736f545db5584aa6179e876b877d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.251429
+      value: 4.1515617
       objectReference: {fileID: 0}
     - target: {fileID: 394308548666134450, guid: bc9736f545db5584aa6179e876b877d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3113,7 +3125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5491368614130733981, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109341109598094380, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
       propertyPath: _playbackConntroller

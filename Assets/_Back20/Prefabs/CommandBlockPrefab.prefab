@@ -52,6 +52,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.UI.CommandBlockView
   _iconImage: {fileID: 1437288953776200591}
+  _backgroundImage: {fileID: 2013920232266869603}
+  _instantGhostSprite: {fileID: -2922133072490521110, guid: fb6a7bdeea981a54390c144affe312f6, type: 3}
+  _durationGhostSprite: {fileID: 8393952286419025352, guid: fb6a7bdeea981a54390c144affe312f6, type: 3}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _nestedColor: {r: 1, g: 0.85, b: 0.2, a: 1}
+  _normalOutlineWidth: 0
+  _outline: {fileID: 0}
 --- !u!222 &885755984811256521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -80,7 +87,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 8393952286419025352, guid: fb6a7bdeea981a54390c144affe312f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

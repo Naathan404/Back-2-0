@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b10077f411639429a9b2f85681297e, type: 3}
   m_Name: JumpInstantCommand
   m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Gameplay.InstantCommand
-  CmdSprite: {fileID: 4281637774074219296, guid: d3e28f6950cd667498d97420544c97c8, type: 3}
+  CmdSprite: {fileID: -5646349190705867672, guid: 6d6fc4e57f493af4c8e8d5ffcd5af731, type: 3}
   ActionName: Jump
   Description: Jump Command
   _actionType: 3
