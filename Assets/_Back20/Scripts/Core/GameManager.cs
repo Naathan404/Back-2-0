@@ -31,7 +31,6 @@ namespace MeowgaByte.Core
             _timelinePlaybackController.Stop();
         }
 
-        [Obsolete]
         public void Lose()
         {
             _state = GameState.Lose;

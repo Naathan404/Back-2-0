@@ -21,6 +21,7 @@ public class SettingPanelController : MonoBehaviour
 
     private void UpdateButton()
     {
+        if (AudioManager.Instance == null) return;
         _bgmButton.color = AudioManager.Instance.IsBGMMuted ? Color.red : Color.white;
         _sfxButton.color = AudioManager.Instance.IsSFXMuted ? Color.red : Color.white;
     }

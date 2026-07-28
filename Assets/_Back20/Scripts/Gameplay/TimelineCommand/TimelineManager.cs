@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MeowgaByte.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MeowgaByte.Gameplay
@@ -20,7 +21,7 @@ namespace MeowgaByte.Gameplay
             _commandList = new List<CommandNode>();
         }
 
-        public CommandNode TryAddCommandNode(float startTime, ActionType actionType, CommandType commandType, float duration = 0, string actionName = "")
+        public CommandNode TryAddCommandNode(float startTime, ActionType actionType, CommandType commandType, float duration = 0, string actionName = "", string des = "", Sprite icon = null)
         {
             if (startTime <= 0) return null;
 
@@ -30,7 +31,9 @@ namespace MeowgaByte.Gameplay
                 StartTime = startTime,
                 Duration = duration,
                 ActType = actionType,
-                CmdType = commandType
+                CmdType = commandType,
+                Description = des,
+                IconSprite = icon
             };
 
             _commandList.Add(node);
@@ -81,40 +84,6 @@ namespace MeowgaByte.Gameplay
         /// sao cho block không đè neighbor nào.
         /// Trả về float.NaN nếu khe hở hiện tại không đủ rộng để chứa "duration".
         /// </summary>
-        // public float ClampToFreeGap(CommandType cmdType, float rawHoverTime, float duration, float levelTime)
-        // {
-        //     if (cmdType != CommandType.Duration || duration <= 0f)
-        //         return Mathf.Clamp(rawHoverTime, 0f, levelTime);
-
-        //     var occupied = _commandList
-        //         .Where(n => n.CmdType == CommandType.Duration)
-        //         .Select(n => (begin: n.StartTime - n.Duration, end: n.StartTime));
-
-        //     foreach (var (begin, end) in occupied)
-        //     {
-        //         if (rawHoverTime > begin && rawHoverTime < end)
-        //         {
-        //             return float.NaN;
-        //         }
-        //     }
-
-        //     float gapLeft = 0f;
-        //     float gapRight = levelTime;
-
-        //     foreach (var (begin, end) in occupied)
-        //     {
-        //         if (end <= rawHoverTime && end > gapLeft) gapLeft = end;
-        //         if (begin >= rawHoverTime && begin < gapRight) gapRight = begin;
-        //     }
-
-        //     float minStart = gapLeft + duration;
-        //     float maxStart = gapRight;
-
-        //     if (minStart > maxStart) return float.NaN;
-
-        //     return Mathf.Clamp(rawHoverTime, minStart, maxStart);
-        // }
-
         public float ClampToFreeGap(CommandType cmdType, ActionType actionType, float rawHoverTime, float duration, float levelTime)
         {
             if (cmdType != CommandType.Duration || duration <= 0f)
@@ -177,6 +146,11 @@ namespace MeowgaByte.Gameplay
             return _commandList.OrderByDescending(c => c.StartTime).ToList();
         }
 
+        public bool RemoveCommandNode(CommandNode node)
+        {
+            return _commandList.Remove(node);
+        }
+
     }
 
     [Serializable]
@@ -187,5 +161,7 @@ namespace MeowgaByte.Gameplay
         public string ActionName;
         public ActionType ActType = ActionType.Wait;
         public CommandType CmdType = CommandType.Instant;
+        public Sprite IconSprite;
+        public string Description;
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using MeowgaByte.Core;
 using MeowgaByte.Data;
+using MeowgaByte.Gameplay;
 using MeowgaByte.UI;
 using UnityEngine;
 
@@ -13,6 +15,16 @@ public class CommandController : MonoBehaviour
     private void Start()
     {
         InitCommandList();
+    }
+
+    private void OnEnable()
+    {
+        TimelineUndoManager.OnUndoPlacedCommand += AddCommand;
+    }
+
+    private void OnDisable()
+    {
+        TimelineUndoManager.OnUndoPlacedCommand -= AddCommand;
     }
 
     private void InitCommandList()
@@ -31,5 +43,19 @@ public class CommandController : MonoBehaviour
                 levelCommand.Command.ActionName,
                 levelCommand.Command.Description);
         }
+    }
+
+    public void AddCommand(CommandNode commandNode)
+    {
+        DraggableCommand cmd = Instantiate(_commandUIPrefab, _commandContainer);
+        cmd.Init(
+            commandNode.CmdType, 
+            commandNode.ActType, 
+            commandNode.IconSprite, 
+            commandNode.Duration, 
+            commandNode.ActionName,
+            commandNode.Description);
+
+        cmd.transform.DOPunchScale(0.25f * Vector2.one, 0.15f);
     }
 }

@@ -163,7 +163,7 @@ namespace MeowgaByte.Gameplay
                 _rb.linearVelocity = Vector2.zero;
                 _rb.isKinematic = true; 
             }
-            this.enabled = false;
+            enabled = false;
         }
 
         public void HitTarget()
