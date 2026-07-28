@@ -1929,10 +1929,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1990904926205520173, guid: 64a7069324973d04e93db2ff251a5d64, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
