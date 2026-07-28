@@ -189,7 +189,7 @@ namespace MeowgaByte.UI
             blockRect.anchoredPosition = new Vector2(droppedX, 0); 
             blockRect.sizeDelta = _lastTargetSize;
 
-            CommandNode node = _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration, command.ActionName);
+            CommandNode node = _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration, command.ActionName, command.CmdDescription, command.Icon);
 
             if (newBlock.TryGetComponent(out CommandBlockView blockView))
             {
@@ -201,7 +201,7 @@ namespace MeowgaByte.UI
                 blockView.SetData(node);
             }
 
-            
+            TimelineUndoManager.Instance?.RecordPlacement(node, newBlock);
             _ghostImage.gameObject.SetActive(false);
             return true;
         }

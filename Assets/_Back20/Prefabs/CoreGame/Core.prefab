@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 564117635214202584}
   - component: {fileID: 6137490978430816787}
   - component: {fileID: 5461262730152484147}
+  - component: {fileID: 1680431285266869602}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -65,10 +66,23 @@ MonoBehaviour:
   _player: {fileID: 6677722685086436883}
   _info: {fileID: 0}
   _lanes:
-  - Zone: {fileID: 0}
-    PlayheadVisual: {fileID: 0}
-  - Zone: {fileID: 0}
-    PlayheadVisual: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _playheadVisual: {fileID: 0}
+--- !u!114 &1680431285266869602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349442806705840907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd68f450e97222a40ad91bad3695d44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeowgaByte.Gameplay.TimelineUndoManager
+  _timelineManager: {fileID: 5371573315161563493}
+  _playbackController: {fileID: 5461262730152484147}
 --- !u!1 &1314476155209095762
 GameObject:
   m_ObjectHideFlags: 0
