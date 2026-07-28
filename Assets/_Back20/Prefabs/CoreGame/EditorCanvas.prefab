@@ -1658,8 +1658,8 @@ MonoBehaviour:
   _tickMarkPrefab: {fileID: 603481453537007144, guid: b0415657e94e03e40b206e833eed2ccd, type: 3}
   _tickMarkContainer: {fileID: 9148996697566905439}
   _ghostImage: {fileID: 3220767947344161368}
-  _sizeDeltaX: 70
-  _sizeDeltaY: 70
+  _sizeDeltaX: 60
+  _sizeDeltaY: 60
   _iconScaleAmount: 1.5
   _validColor: {r: 0.72156864, g: 1, b: 0.7294118, a: 1}
   _nestedValidColor: {r: 1, g: 0.85, b: 0.2, a: 1}
@@ -2158,8 +2158,8 @@ MonoBehaviour:
   _tickMarkPrefab: {fileID: 603481453537007144, guid: b0415657e94e03e40b206e833eed2ccd, type: 3}
   _tickMarkContainer: {fileID: 3546080882401216376}
   _ghostImage: {fileID: 648166746735312614}
-  _sizeDeltaX: 70
-  _sizeDeltaY: 70
+  _sizeDeltaX: 60
+  _sizeDeltaY: 60
   _iconScaleAmount: 1.5
   _validColor: {r: 0.72156864, g: 1, b: 0.7294118, a: 1}
   _nestedValidColor: {r: 1, g: 0.85, b: 0.2, a: 1}

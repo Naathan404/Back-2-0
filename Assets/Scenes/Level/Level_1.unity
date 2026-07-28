@@ -617,6 +617,10 @@ PrefabInstance:
       propertyPath: _sizeDeltaY
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 3887803264844164749, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4956806988374318894, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
       propertyPath: _timeline
       value: 
@@ -650,7 +654,8 @@ PrefabInstance:
       value: -388
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5915999711772572328, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4667f3398dda06d46861ec29a611176e, type: 3}
