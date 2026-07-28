@@ -189,17 +189,18 @@ namespace MeowgaByte.UI
             blockRect.anchoredPosition = new Vector2(droppedX, 0); 
             blockRect.sizeDelta = _lastTargetSize;
 
+            CommandNode node = _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration, command.ActionName);
+
             if (newBlock.TryGetComponent(out CommandBlockView blockView))
             {
                 blockView.SetIcon(command.Icon, _sizeDeltaX * _iconScaleAmount, _sizeDeltaY * _iconScaleAmount);
-                blockView.SetData(startTime, command.CmdType);
                 blockView.SetGhostSprite(command.CmdType);
                 bool isNested = command.Action == ActionType.Wait
                     && _timeline.IsNestedInsideRun(startTime, command.Duration);
                 blockView.SetNestedStyle(isNested);
+                blockView.SetData(node);
             }
 
-            _timeline.TryAddCommandNode(startTime, command.Action, command.CmdType, command.Duration, command.ActionName);
             
             _ghostImage.gameObject.SetActive(false);
             return true;
