@@ -22,8 +22,7 @@ namespace MeowgaByte.UI
         [SerializeField] private Outline _outline;
 
         private TimelinePlaybackController _playbackController;
-        private float _startTime;
-        private CommandType _commandType;
+        private CommandNode _node;
 
         private void Awake()
         {
@@ -61,10 +60,9 @@ namespace MeowgaByte.UI
             _iconImage.rectTransform.sizeDelta = new Vector2(x, y);
         }
 
-        public void SetData(float start, CommandType type)
+        public void SetData(CommandNode node)
         {
-            _startTime = start;
-            _commandType = type;
+            _node = node;
         }
 
         public void SetGhostSprite(CommandType commandType)
@@ -97,7 +95,7 @@ namespace MeowgaByte.UI
 
         public void PunchIcon(CommandNode node)
         {
-            if (node.StartTime != _startTime || node.CmdType != _commandType) return;
+            if (_node != node) return;
             _iconImage.transform.DOKill();
             _iconImage.transform.DOPunchScale(0.25f * Vector2.one, 0.2f).SetEase(Ease.OutExpo);
         }

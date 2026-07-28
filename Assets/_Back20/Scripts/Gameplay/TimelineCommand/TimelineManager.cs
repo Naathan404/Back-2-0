@@ -20,19 +20,21 @@ namespace MeowgaByte.Gameplay
             _commandList = new List<CommandNode>();
         }
 
-        public bool TryAddCommandNode(float startTime, ActionType actionType, CommandType commandType, float duration = 0, string actionName = "")
+        public CommandNode TryAddCommandNode(float startTime, ActionType actionType, CommandType commandType, float duration = 0, string actionName = "")
         {
-            if (startTime <= 0) return false;
+            if (startTime <= 0) return null;
 
-            _commandList.Add(new CommandNode
+            CommandNode node = new CommandNode
             {
                 ActionName = actionName,
                 StartTime = startTime,
                 Duration = duration,
                 ActType = actionType,
                 CmdType = commandType
-            });
-            return true;
+            };
+
+            _commandList.Add(node);
+            return node;
         }
 
         /// <summary>
